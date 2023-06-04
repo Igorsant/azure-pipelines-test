@@ -7,12 +7,12 @@ stages:
               echo "##vso[task.setvariable variable=one;isOutput=true]One"
             name: variable
   - stage: Two
-    variables: 
-      - name: test
-        value: $[stageDependencies.One.JobOne.outputs['variable.One']]
     jobs:
       - job: JobTwo
+        variables: 
+        - name: test
+          value: $[dependencies.One.outputs['JobOne.variable.One']]
         steps:
           - template: ./step.yaml
             parameters:
-              version: $(variables.test)
+              version: $(test)
