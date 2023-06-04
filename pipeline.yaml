@@ -11,7 +11,7 @@ stages:
       - job: JobTwo
         variables: 
           - name: test
-            value: $[dependencies.One.outputs['JobOne.variable.One']]
+            value: $[dependencies.One.outputs['JobOne.variable']]
         steps:
           - template: ./step.yaml
             parameters:
