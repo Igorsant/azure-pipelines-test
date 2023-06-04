@@ -15,4 +15,4 @@ stages:
         steps:
           - template: ./step.yaml
             parameters:
-              version: ${{ variable.test }}
+              version: ${{ variables.test }}
