@@ -4,5 +4,5 @@ parameters:
 
 steps:
   - bash: |
-      echo "$(version)"
+      echo "${{ parameters.version }}"
     name: variable
