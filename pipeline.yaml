@@ -12,7 +12,7 @@ stages:
     jobs:
       - job: JobTwo
         variables:
-          inJob: '3'
+          inJob: ${{ variables.test }}
         steps:
           - bash: |
               echo "$(inJob)"
