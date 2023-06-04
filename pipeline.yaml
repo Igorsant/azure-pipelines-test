@@ -10,8 +10,8 @@ stages:
     variables: 
       test: $[stageDependencies.One.JobOne['variable.One']]
     jobs:
-      - job: JobOne
+      - job: JobTwo
         steps:
           - bash: |
-              echo "$(One)"
+              echo "$(test)"
             name: variable
