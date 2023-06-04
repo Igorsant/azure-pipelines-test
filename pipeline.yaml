@@ -8,12 +8,11 @@ stages:
             name: variable
   - stage: Two
     variables: 
-      test: $[stageDependencies.One.JobOne.outputs['variable.One']]
+      - name: test
+        value: $[stageDependencies.One.JobOne.outputs['variable.One']]
     jobs:
       - job: JobTwo
-        variables:
-          inJob: ${{ variables.test }}
         steps:
-          - bash: |
-              echo "$(inJob)"
-            name: variable
+          - template: ./step.yaml
+          parameters:
+            version: ${{ variables.test }}
