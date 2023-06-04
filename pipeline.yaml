@@ -1,0 +1,17 @@
+stages:
+  - stage: One
+    jobs:
+      - job: JobOne
+        steps:
+          - bash: |
+              echo "##vso[task.setvariable variable=one;isOutput=true]One"
+            name: variable
+  - stage: Two
+    variables: 
+      test: $[stageDependencies.One.JobOne['variable.One']]
+    jobs:
+      - job: JobOne
+        steps:
+          - bash: |
+              echo "$(One)"
+            name: variable
