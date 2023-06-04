@@ -11,7 +11,9 @@ stages:
       test: $[stageDependencies.One.JobOne.outputs['variable.One']]
     jobs:
       - job: JobTwo
+        variables:
+          inJob: '3'
         steps:
           - bash: |
-              echo "$(test)"
+              echo "$(inJob)"
             name: variable
